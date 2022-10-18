@@ -1,0 +1,557 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vidtube</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Ubuntu:wght@300;400;700&display=swap");
+
+      /* --------Universal------- */
+
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: "Roboto", sans-serif;
+      }
+      a {
+        text-decoration: none;
+        color: #5a5a5a;
+      }
+      img {
+        cursor: pointer;
+      }
+
+      /* ---------nav--------- */
+
+      .flex-div {
+        display: flex;
+        align-items: center;
+      }
+      nav {
+        padding: 10px 2%;
+        justify-content: space-between;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        background-color: #fff;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+      .nav-left .menu-icon {
+        width: 22px;
+        margin-right: 15px;
+      }
+      .nav-left .logo {
+        width: 130px;
+      }
+      .nav-right img {
+        width: 25px;
+        margin-right: 25px;
+      }
+      .nav-right .user-icon {
+        width: 35px;
+        border-radius: 50%;
+        margin-right: 0;
+      }
+      .nav-middle .mic-icon {
+        width: 16px;
+      }
+      .nav-middle .search-box {
+        border: 1px solid #ccc;
+        margin-right: 15px;
+        padding: 8px 12px;
+      }
+      .nav-middle .search-box input {
+        border: 0;
+        outline: 0;
+        width: 400px;
+        background: transparent;
+      }
+      .nav-middle .search-box img {
+        width: 15px;
+      }
+
+      /* ---------sidebar--------- */
+
+      .sidebar {
+        background: #fff;
+        width: 15%;
+        height: 100vh;
+        top: 0;
+        position: fixed;
+        padding-left: 2%;
+        padding-top: 80px;
+      }
+      .shortcut-links a img {
+        width: 20px;
+        margin-right: 20px;
+      }
+      .shortcut-links a {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        width: fit-content;
+        flex-wrap: wrap;
+      }
+      .shortcut-links a:first-child {
+        color: red;
+      }
+      .shortcut-links hr {
+        border: 0;
+        height: 1px;
+        background: #ccc;
+        width: 85%;
+      }
+      .subscribed-list h3 {
+        font-size: 13px;
+        color: #5a5a5a;
+        margin: 20px 0;
+      }
+      .subscribed-list a img {
+        width: 25px;
+        border-radius: 50%;
+        margin-right: 20px;
+      }
+      .subscribed-list a {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        width: fit-content;
+        flex-wrap: wrap;
+      }
+
+      /* ---------main--------- */
+
+      .container {
+        background: #fff;
+        padding-left: 17%;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-right: 2%;
+      }
+      .banner {
+        width: 100%;
+      }
+      .banner img {
+        width: 100%;
+      }
+      .list-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-column-gap: 16px;
+        grid-row-gap: 30px;
+        margin-top: 15px;
+      }
+      .video-list .thumbnail {
+        width: 100%;
+      }
+      .video-list .flex-div {
+        align-items: flex-start;
+        margin-top: 7px;
+      }
+      .video-list .flex-div img {
+        width: 35px;
+        margin-right: 10px;
+        border-radius: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="flex-div">
+      <div class="nav-left flex-div">
+        <img src="Images/menu.png" class="menu-icon" />
+        <img src="Images/logo.png" class="logo" />
+      </div>
+      <div class="nav-middle flex-div">
+        <div class="search-box flex-div">
+          <input type="text" placeholder="Search" />
+          <img src="Images/search.png" />
+        </div>
+        <img
+          src="Images/voice-search.png"
+          class="mic-icon"
+        />
+      </div>
+      <div class="nav-right flex-div">
+        <img src="Images/upload.png" />
+        <img src="Images/more.png" />
+        <img src="Images/notification.png" />
+        <img src="Images/aayush.jpg" class="user-icon" />
+      </div>
+    </nav>
+
+    <!-- -------- sidebar --------- -->
+
+    <div class="sidebar">
+      <div class="shortcut-links">
+        <a href=""
+          ><img src="Images/home.png" />
+          <p>Home</p></a
+        >
+        <a href=""
+          ><img src="Images/explore.png" />
+          <p>Explore</p></a
+        >
+        <a href=""
+          ><img src="Images/subscription.png" />
+          <p>Subscription</p></a
+        >
+        <a href=""
+          ><img src="Images/library.png" />
+          <p>Library</p></a
+        >
+        <a href=""
+          ><img src="Images/history.png" />
+          <p>History</p></a
+        >
+        <a href=""
+          ><img src="Images/playlist.png" />
+          <p>Playlists</p></a
+        >
+        <a href=""
+          ><img src="Images/messages.png" />
+          <p>Messages</p></a
+        >
+        <a href=""
+          ><img src="Images/show-more.png" />
+          <p>Show-More</p></a
+        >
+        <hr />
+      </div>
+      <div class="subscribed-list">
+        <h3>Subscriptions</h3>
+        <a href=""
+          ><img src="Images/aayush.jpg" />
+          <p>Aayush Bidiyasar Vlogs</p></a>
+        <a href=""
+          ><img src="Images/apple.jpg" />
+          <p>Apple</p></a
+        >
+        <a href=""
+          ><img src="Images/sonysab.jpg" />
+          <p>Sony Sab</p></a
+        >
+        <a href=""
+          ><img src="Images/sonypal.jpg" />
+          <p>Sony Pal</p></a
+        >
+        <a href=""
+          ><img src="Images/code.jpg" />
+          <p>codewithharry</p></a
+        >
+      </div>
+    </div>
+
+    <!-- -------main-------- -->
+
+    <div class="container">
+      <div class="banner">
+        <img src="Images/banner.png" />
+      </div>
+      <div class="list-container">
+        <div class="video-list">
+          <a href=""
+            ><img
+              src="Images/thumbnail1.png"
+              class="thumbnail"
+          /></a>
+          <div class="flex-div">
+            <img src="Images/aayush.jpg" />
+            <div class="video-info">
+              <a href="">Going to Maldives with my whole family members</a>
+              <p>Aayush Bidiyasar Vlogs</p>
+              <p>21M views 2 days</p>
+            </div>
+          </div>
+        </div>
+        <div class="video-list">
+          <a href=""
+            ><img
+              src="Images/thumbnail2.png"
+              class="thumbnail"
+          /></a>
+          <div class="flex-div">
+            <img src="Images/apple.jpg" alt="">
+            <div class="video-info">
+              <a href="">Going to Maldives with my whole family members</a>
+              <p>Apple</p>
+              <p>21M views 2 days</p>
+            </div>
+          </div>
+        </div>
+        <div class="video-list">
+          <a href=""
+            ><img
+              src="Images/thumbnail3.png"
+              class="thumbnail"
+          /></a>
+          <div class="flex-div">
+            <img src="Images/sonysab.jpg" />
+            <div class="video-info">
+              <a href="">Going to Maldives with my whole family members</a>
+              <p>Sony Sab</p>
+              <p>21M views 2 days</p>
+            </div>
+          </div>
+        </div>
+        <div class="video-list">
+          <a href=""
+            ><img
+              src="Images/thumbnail4.png"
+              class="thumbnail"
+          /></a>
+          <div class="flex-div">
+            <img src="Images/code.jpg" />
+            <div class="video-info">
+              <a href="">Going to Maldives with my whole family members</a>
+              <p>codewithharry</p>
+              <p>21M views 2 days</p>
+            </div>
+          </div>
+        </div>
+        <div class="video-list">
+          <a href=""
+            ><img
+              src="Images/thumbnail5.png"
+              class="thumbnail"
+          /></a>
+          <div class="flex-div">
+            <img src="Images/sonypal.jpg" />
+            <div class="video-info">
+              <a href="">Going to Maldives with my whole family members</a>
+              <p>Sony Pal</p>
+              <p>21M views 2 days</p>
+            </div>
+          </div>
+        </div>
+        <div class="video-list">
+          <a href=""
+            ><img
+              src="Images/thumbnail6.png"
+              class="thumbnail"
+          /></a>
+          <div class="flex-div">
+            <img src="Images/apple.jpg" />
+            <div class="video-info">
+              <a href="">Going to Maldives with my whole family members</a>
+              <p>Apple</p>
+              <p>21M views 2 days</p>
+            </div>
+          </div>
+        </div>
+        <div class="video-list">
+          <a href=""
+            ><img
+              src="Images/thumbnail7.png"
+              class="thumbnail"
+          /></a>
+          <div class="flex-div">
+            <img src="Images/aayush.jpg" />
+            <div class="video-info">
+              <a href="">Going to Maldives with my whole family members</a>
+              <p>Aayush Bidiyasar Vlogs</p>
+              <p>21M views 2 days</p>
+            </div>
+          </div>
+        </div>
+        <div class="video-list">
+          <a href=""
+            ><img
+              src="Images/thumbnail8.png"
+              class="thumbnail"
+          /></a>
+          <div class="flex-div">
+            <img src="Images/code.jpg" />
+            <div class="video-info">
+              <a href="">Going to Maldives with my whole family members</a>
+              <p>codewithharry</p>
+              <p>21M views 2 days</p>
+            </div>
+          </div>
+        </div>
+        <div class="video-list">
+          <a href=""
+            ><img
+              src="Images/thumbnail1.png"
+              class="thumbnail"
+          /></a>
+          <div class="flex-div">
+            <img src="Images/sonysab.jpg" />
+            <div class="video-info">
+              <a href="">Going to Maldives with my family members</a>
+              <p>Sony Sab</p>
+              <p>21M views 2 days</p>
+            </div>
+          </div>
+        </div>
+        <div class="video-list">
+          <a href=""
+            ><img
+              src="Images/thumbnail2.png"
+              class="thumbnail"
+          /></a>
+          <div class="flex-div">
+            <img src="Images/sonypal.jpg" />
+            <div class="video-info">
+              <a href="">Going to Maldives with my whole family members</a>
+              <p>Sony Pal</p>
+              <p>21M views 2 days</p>
+            </div>
+          </div>
+        </div>
+        <div class="video-list">
+          <a href=""
+            ><img
+              src="Images/thumbnail3.png"
+              class="thumbnail"
+          /></a>
+          <div class="flex-div">
+            <img src="Images/aayush.jpg" />
+            <div class="video-info">
+              <a href="">Going to Maldives with my whole family members</a>
+              <p>Aayush Bidiyasar Vlogs</p>
+              <p>21M views 2 days</p>
+            </div>
+          </div>
+        </div>
+        <div class="video-list">
+          <a href=""
+            ><img
+              src="Images/thumbnail4.png"
+              class="thumbnail"
+          /></a>
+          <div class="flex-div">
+            <img src="Images/apple.jpg" />
+            <div class="video-info">
+              <a href="">Going to Maldives with my whole family members</a>
+              <p>Apple</p>
+              <p>21M views 2 days</p>
+            </div>
+          </div>
+        </div>
+        <div class="video-list">
+          <a href=""
+            ><img
+              src="Images/thumbnail5.png"
+              class="thumbnail"
+          /></a>
+          <div class="flex-div">
+            <img src="Images/sonysab.jpg" />
+            <div class="video-info">
+              <a href="">Going to Maldives with my whole family members</a>
+              <p>Sony Sab</p>
+              <p>21M views 2 days</p>
+            </div>
+          </div>
+        </div>
+        <div class="video-list">
+          <a href=""
+            ><img
+              src="Images/thumbnail6.png"
+              class="thumbnail"
+          /></a>
+          <div class="flex-div">
+            <img src="Images/code.jpg" />
+            <div class="video-info">
+              <a href="">Going to Maldives with my whole family members</a>
+              <p>codewithharry</p>
+              <p>21M views 2 days</p>
+            </div>
+          </div>
+        </div>
+        <div class="video-list">
+          <a href=""
+            ><img
+              src="Images/thumbnail7.png"
+              class="thumbnail"
+          /></a>
+          <div class="flex-div">
+            <img src="Images/apple.jpg" />
+            <div class="video-info">
+              <a href="">Going to Maldives with my whole family members</a>
+              <p>Apple</p>
+              <p>21M views 2 days</p>
+            </div>
+          </div>
+        </div>
+        <div class="video-list">
+          <a href=""
+            ><img
+              src="Images/thumbnail8.png"
+              class="thumbnail"
+          /></a>
+          <div class="flex-div">
+            <img src="Images/code.jpg" />
+            <div class="video-info">
+              <a href="">Going to Maldives with my whole family members</a>
+              <p>codewithharry</p>
+              <p>21M views 2 days</p>
+            </div>
+          </div>
+        </div>
+        <div class="video-list">
+          <a href=""
+            ><img
+              src="Images/thumbnail1.png"
+              class="thumbnail"
+          /></a>
+          <div class="flex-div">
+            <img src="Images/aayush.jpg" />
+            <div class="video-info">
+              <a href="">Going to Maldives with my whole family members</a>
+              <p>Aayush Bidiyasar Vlogs</p>
+              <p>21M views 2 days</p>
+            </div>
+          </div>
+        </div>
+        <div class="video-list">
+          <a href=""
+            ><img
+              src="Images/thumbnail2.png"
+              class="thumbnail"
+          /></a>
+          <div class="flex-div">
+            <img src="Images/apple.jpg" />
+            <div class="video-info">
+              <a href="">Going to Maldives with my whole family members</a>
+              <p>Apple</p>
+              <p>21M views 2 days</p>
+            </div>
+          </div>
+        </div>
+        <div class="video-list">
+          <a href=""
+            ><img
+              src="Images/thumbnail3.png"
+              class="thumbnail"
+          /></a>
+          <div class="flex-div">
+            <img src="Images/aayush.jpg" />
+            <div class="video-info">
+              <a href="">Going to Maldives with my whole family members</a>
+              <p>Aayush Bidiyasar Vlogs</p>
+              <p>21M views 2 days</p>
+            </div>
+          </div>
+        </div>
+        <div class="video-list">
+          <a href=""
+            ><img
+              src="Images/thumbnail4.png"
+              class="thumbnail"
+          /></a>
+          <div class="flex-div">
+            <img src="Images/code.jpg" />
+            <div class="video-info">
+              <a href="">Going to Maldives with my whole family members</a>
+              <p>codewithharry</p>
+              <p>21M views 2 days</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
